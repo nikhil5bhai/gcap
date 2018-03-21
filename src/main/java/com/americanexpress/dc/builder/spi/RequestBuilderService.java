@@ -6,7 +6,7 @@ import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 
 
-/** @author Richard Wilson */
+
 public abstract class RequestBuilderService
 {
 

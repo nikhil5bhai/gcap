@@ -1,12 +1,3 @@
-com.americanexpress.dc.mock.service.offers.OffersRequestStubBuilderService
-com.americanexpress.dc.mock.service.pzn.PZNStubBuilderService
-com.americanexpress.dc.mock.service.cardart.CardartStubBuilderService
-com.americanexpress.dc.mock.service.cardart.TokenRequestBuilderService
-com.americanexpress.dc.mock.service.cas.CASRequestStubBuilderService
-com.americanexpress.dc.mock.service.mgm.MgmRequestStubBuilderService
-com.americanexpress.dc.mock.service.checkSpeningPower.CheckSpendingPowerRequestStubBuilderService
 com.americanexpress.dc.mock.service.SoapRequestStubBuilderService
 com.americanexpress.dc.mock.service.FinancialsRequestStubBuilderService
 com.americanexpress.dc.mock.service.RestRequestStubBuilderService
-com.americanexpress.dc.mock.service.interstitial.InterstitialRequestStubBuilderService
-com.americanexpress.dc.mock.service.loyaltyTracker.LoyaltyTrackerRequestStubBuilderService

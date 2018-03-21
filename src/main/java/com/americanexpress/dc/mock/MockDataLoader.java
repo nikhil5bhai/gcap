@@ -66,10 +66,10 @@ public class MockDataLoader
 
     // start on port 8080,
     // no HTTPS
-    App.ConfigProperties.loadPropertyFile( "config_mock_member.properties" );
-    App.ConfigProperties.loadQueryPropertyFile( "config_query_params.properties" );
-    App.ConfigProperties.loadPathPropertyFile( "config_path_params.properties" );
-    App.ConfigProperties.loadHeaderPropertyFile( "config_header.properties" );
+    App.ConfigProperties.loadPropertyFile( "config_mock.properties" );
+   // App.ConfigProperties.loadQueryPropertyFile( "config_query_params.properties" );
+   // App.ConfigProperties.loadPathPropertyFile( "config_path_params.properties" );
+    //App.ConfigProperties.loadHeaderPropertyFile( "config_header.properties" );
 
     final Properties mockProperties = App.ConfigProperties.getPropertyKeyValue();
     for( final String serviceCallName : mockProperties.stringPropertyNames() )
