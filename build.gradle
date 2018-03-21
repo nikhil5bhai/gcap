@@ -1,0 +1,244 @@
+
+
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+version = '2.0'
+
+//create a single Jar with all dependencies
+ task axp_api_mock(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Main-Class': 'com.americanexpress.dc.mock.MockDataLoader'
+    }
+    baseName = 'app'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+   maven {
+            url 'https://ci-repo.aexp.com/java-proxy/content/groups/prod'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/plugins-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-snapshot'
+        }
+}
+
+repositories {
+    maven {
+            url 'https://ci-repo.aexp.com/java-proxy/content/groups/prod'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/plugins-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-snapshot'
+        }
+}
+
+
+  task copyJar(type: Copy) {
+	   println "copying jar"
+  	   from 'build/libs/app.jar'
+       into 'build/appBundle/'
+  }
+  
+  task copyOpenshiftJar(type: Copy) {
+       println "copying openshift directory"
+  	   from '.openshift'
+       into 'build/appBundle/.openshift'
+       exclude "action_hooks","config","cron"
+  }
+    
+  
+  task tarGzJar(type: Tar) {
+       println "creating tar"
+       from 'build/appBundle'
+       baseName = project.name
+       destinationDir = file('.')
+	   extension = 'tar.gz'
+	   compression = Compression.GZIP
+  }
+  
+  copyJar.dependsOn axp_api_mock
+  copyJar.mustRunAfter axp_api_mock
+  copyOpenshiftJar.dependsOn copyJar
+  copyOpenshiftJar.mustRunAfter copyJar
+  tarGzJar.dependsOn copyOpenshiftJar
+  tarGzJar.mustRunAfter copyOpenshiftJar
+  
+// In this section you declare where to find the dependencies of your project
+repositories {
+    maven {
+            url 'https://ci-repo.aexp.com/java-proxy/content/groups/prod'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/plugins-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-snapshot'
+        }
+   maven {
+            url 'https://ci-repo.aexp.com/java-proxy/content/groups/prod'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/plugins-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-release'
+        }
+        maven {
+            url 'http://acp-repoadm.app.aexp.com/artifactory/libs-snapshot'
+        }
+    flatDir {
+        dirs 'libs'
+    }
+}
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // The production code uses the SLF4J logging API at compile time
+    compile 'org.slf4j:slf4j-api:1.7.14'
+    compile 'org.apache.commons:commons-collections4:4.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-cli:commons-cli:1.4'
+   // compile 'com.americanexpress.as.spa.data:cardsvc_client:1.3-SNAPSHOT'
+    //compile 'com.americanexpress.as.spa.data:creditstatussvc_client:1.0-SNAPSHOT'
+    //compile 'com.americanexpress.as.spa.data:financialsvc_client:1.0-SNAPSHOT'
+    compile 'com.americanexpress.as.scpl:scpl_config:8.10.5'
+    
+    compile 'org.mongodb:mongo-java-driver:3.2.2'
+    compile 'com.google.guava:guava:19.0'
+   compile ('com.github.tomakehurst:wiremock:2.6.0'){
+        exclude module:'jackson-core'
+        exclude module:'jackson-databind'
+        exclude module:'jopt-simple'
+        exclude module:'xmlunit'
+        
+    }
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.2'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.8.3'
+	compile 'net.sf.jopt-simple:jopt-simple:4.8'
+	compile 'xmlunit:xmlunit:1.5'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'org.hamcrest:hamcrest-all:1.3'
+    compile('junit:junit:4.12') {
+        exclude group: 'org.hamcrest', module: 'hamcrest-core'
+    }
+    compile('com.americanexpress.as.log:log:8.12.1') {
+        exclude group: 'junit', module: 'junit'
+    }
+    compile('com.americanexpress.as.cfg:cfg:9.0') {
+        exclude module: 'javaee'
+    }
+    compile 'javax.servlet:servlet-api:3.0'
+    compile 'org.mockito:mockito-all:1.9.5'
+    //compile 'com.americanexpress.as.spa.data:financialsvc_client:1.0-SNAPSHOT'
+    compile 'com.americanexpress.as.afwk:afwk:8.1'
+    compile 'org.apache.poi:poi:3.10-FINAL'
+    compile 'com.americanexpress.as.sap:sap:8.2.2'
+    compile('com.americanexpress.as.scpl:scpl_core:8.10.5') {
+        exclude module: 'javaee'
+    }
+    compile 'org.jboss.resteasy:resteasy-client:3.0.15.Final'
+    compile 'xerces:xercesImpl:2.9.1'
+    compile 'com.americanexpress.as.spa.data:creditstatussvc_client:1.0'
+    compile 'com.americanexpress.as.spa.data:financialsvc_client:1.0'
+
+    compile 'com.americanexpress.as.spa.data:intl_loyalty_details_svc_ws_bind:1.2'
+	compile 'com.americanexpress.as.spa.data:us_loyalty_account_info_svc_ws_bind:1.1'
+	compile 'com.americanexpress.as.spa.data:us_loyalty_statement_svc_ws_bind:1.2'
+
+	compile 'se.jiderhamn.classloader-leak-prevention:classloader-leak-prevention-servlet3:2.2.0'
+
+    //compile 'com.americanexpress.myca.payment.dc.api:axp-myca-payment-api-paysbind:1.0-SNAPSHOT'
+    
+    // Common dependency for WS Handlers
+	compile 'com.axp.myca.common:axp-myca-common-util:1.0-SNAPSHOT'
+    
+    // Preferences service clients
+	compile 'com.americanexpress.myca.payment.dc.api:axp-myca-payment-api-paysbind:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-accountupdate-ws-bind:1.9'
+    compile 'com.americanexpress.as.acctmapper:acctmappers:2.2'
+	compile 'com.axp.myca.svcclients:axp-myca-sdp-inquiry-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-sdp-update-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-econsent-update-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-econsent-inquiry-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-alerts-inquiry-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-alerts-update-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-privacy-preferences-inquiry-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-privacy-preferences-update-client:1.0-SNAPSHOT'
+    
+    // Profile service clients
+    compile 'com.axp.myca.svcclients:axp-myca-email-inquiry-client:1.0-SNAPSHOT'
+    compile 'com.axp.myca.svcclients:axp-myca-email-update-client:1.0-SNAPSHOT'
+
+
+    // PIN MANAGEMENT Clients
+    //compile 'com.axp.api.adapters:axp-api-pin-adapters:PIN-SNAPSHOT'
+
+    // ADDRESS MANAGEMENT Clients
+   // compile 'axp-api-profile-adapters:axp-api-address-adapters:1.2-ADDRESS-SNAPSHOT'
+
+	// Intl Loyalty service clients
+	compile 'com.americanexpress.as.spa.data:intl_loyalty_details_svc_ws_bind:1.2'
+    //Loyalty Bonus serice
+    compile 'com.axp.myca.svcclients:axp-myca-us-loyalty-bonus-svc-ws-bind:1.0-SNAPSHOT'
+	
+	//encryption
+	compile 'com.americanexpress.as.cfg:cfg:9.0'
+
+
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    testCompile('junit:junit:4.12') {
+        exclude group: 'org.hamcrest', module: 'hamcrest-core'
+    }
+}
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+	apply plugin: 'idea'
+
+    version = '1.0-SNAPSHOT'
+    repositories {
+        // Use 'jcenter' for resolving your dependencies.
+        // You can declare any Maven/Ivy/file repository here.
+        //jcenter()
+        maven {
+            url "https://repo.aedc.extra.aexp.com/nexus/content/groups/prod"
+        }
+       
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+                output.classesDir = 'build/classes/main'
+            }
+        }
+    }
+}
+
+configurations {
+    all*.exclude group: 'com.americanexpress.as'
+    all*.exclude group: 'javax.javaee', module: 'javaee'
+    all*.exclude group: 'commons-lang', module: 'commons-lang'
+    all*.exclude group: 'commons-collections', module: 'commons-collections'
+}

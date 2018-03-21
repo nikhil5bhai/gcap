@@ -1,0 +1,168 @@
+    "Member": {
+      "type": "object",
+      "properties": {
+        "last_login": {
+          "$ref": "#/definitions/LastLogin"
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrimaryAccount"
+          }
+        },
+        "member_since_date": {
+          "type": "string"
+        }
+      }
+    },
+    "PrimaryAccount": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Account"
+        },
+        {
+          "properties": {
+            "supplementary_accounts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "account_token": {
+          "type": "string"
+        },
+        "account_weight": {
+          "type": "integer"
+        },
+        "sorted_index": {
+          "type": "integer"
+        },
+        "account": {
+          "type": "object",
+          "properties": {
+            "display_account_number": {
+              "type": "string"
+            },
+            "relationship": {
+              "type": "string"
+            },
+            "supplementary_index": {
+              "type": "string"
+            }
+          }
+        },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "first_name": {
+              "type": "string"
+            },
+            "last_name": {
+              "type": "string"
+            },
+            "embossed_name": {
+              "type": "string"
+            },
+            "member_since_date": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "locale_preference": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            }
+          }
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "digital_asset_id": {
+              "type": "string"
+            },
+            "large_card_art": {
+              "type": "string"
+            },
+            "small_card_art": {
+              "type": "string"
+            },
+            "line_of_business_type": {
+              "type": "string"
+            },
+            "payment_type": {
+              "type": "string"
+            },
+            "card_eligibilities": {
+              "type": "array",
+              "description": "Allowed values ['BalanceTransferEligible', 'EStatementEligible', 'LineOfCreditEligible', 'OnlineDisputesEligible', 'PaperCopyEligible', 'PayByPCEligible', 'QMREligible', 'UnbilledDisputesEligible', 'ExpoTransferEligible', 'ExpoEnrollmentEligible', 'SignAndTravelTransferEligible', 'SignAndTravelEnrollmentEligible', 'FlexSelectEligible', 'PrivatePaymentsEligible', 'MembershipRewardsEligible', 'YearEndSummaryEligible', 'AutomatedClearingHouseEligible', 'GLoS', 'ProdIDInfoAvailableEligible', 'IntlAllEstmServiceEligible', 'IntlPartialNonDerogEstmServiceEligible', 'IntlPartialDerogEstmServiceEligible', 'IntlAllExceptPdfEstmServiceEligible', 'IntlNoneEstmServiceEligible', 'MandatoryAutoPayEligible', 'SelfSelectReallocationEligibile', 'SelectPayEligible', 'GraceTermRejectionIndicator']",
+              "items": {
+                "type": "string"
+              }
+            },
+            "account_eligibilities": {
+              "type": "array",
+              "description": "Allowed values ['BalanceTransferEligible', 'EStatementEligible', 'LineOfCreditEligible', 'OnlineDisputesEligible', 'PaperCopyEligible', 'PayByPCEligible', 'QMREligible', 'UnbilledDisputesEligible', 'ExpoTransferEligible', 'ExpoEnrollmentEligible', 'SignAndTravelTransferEligible', 'SignAndTravelEnrollmentEligible', 'FlexSelectEligible', 'PrivatePaymentsEligible', 'MembershipRewardsEligible', 'YearEndSummaryEligible', 'AutomatedClearingHouseEligible', 'GLoS', 'ProdIDInfoAvailableEligible', 'IntlAllEstmServiceEligible', 'IntlPartialNonDerogEstmServiceEligible', 'IntlPartialDerogEstmServiceEligible', 'IntlAllExceptPdfEstmServiceEligible', 'IntlNoneEstmServiceEligible', 'MandatoryAutoPayEligible', 'SelfSelectReallocationEligibile', 'SelectPayEligible', 'GraceTermRejectionIndicator']",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "card_status": {
+              "type": "array",
+              "description": "Allowed values ['Active', 'Canceled', 'Collection', 'CanceledDeceased', 'CanceledDerog', 'Fraud', 'CanceledBankrupt', 'CardInCycleCut', 'PastDue', 'Reinstated', 'ReplacedSinceEnrolled']",
+              "items": {
+                "type": "string"
+              }
+            },
+            "account_status": {
+              "type": "array",
+              "description": "Allowed values ['Active', 'Canceled', 'Collection', 'CanceledDeceased', 'CanceledDerog', 'Fraud', 'CanceledBankrupt', 'CardInCycleCut', 'PastDue', 'Reinstated', 'ReplacedSinceEnrolled']",
+              "items": {
+                "type": "string"
+              }
+            },
+            "days_past_due": {
+              "type": "integer"
+            },
+            "account_setup_date": {
+              "type": "string"
+            },
+            "expiration_date": {
+              "type": "string"
+            }
+          }
+        },
+        "platform": {
+          "type": "object",
+          "properties": {
+            "market_name": {
+              "type": "string"
+            },
+            "iso_alpha_currency_code": {
+              "type": "string"
+            },
+            "amex_region": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }

@@ -1,0 +1,1 @@
+-Djavax.net.ssl.trustStore=/opt/crypto/trustStore -Djavax.net.ssl.trustStorePassword=Password#123
