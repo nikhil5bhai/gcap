@@ -21,7 +21,7 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 
 
-/** @author Richard Wilson */
+
 public class HeaderContainsSecurityToken implements RequestStubBuilder
 {
 

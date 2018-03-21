@@ -10,7 +10,7 @@ import java.util.ServiceLoader;
 import static java.lang.String.format;
 
 
-/** @author Richard Wilson */
+
 public abstract class RequestStubBuilderService
 {
 

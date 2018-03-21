@@ -24,7 +24,7 @@ import static com.github.tomakehurst.wiremock.common.ProxySettings.NO_PROXY;
 import static com.github.tomakehurst.wiremock.http.RequestMethod.*;
 
 
-/** @author Richard Wilson */
+
 @SuppressWarnings({ "deprecation" })
 public class TLSHttpClientFactory
 {

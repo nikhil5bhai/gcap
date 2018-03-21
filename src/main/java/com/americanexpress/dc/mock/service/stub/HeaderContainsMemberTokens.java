@@ -15,7 +15,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 
-/** @author Richard Wilson */
+
 public class HeaderContainsMemberTokens extends HeaderContainsSecurityToken
 {
 

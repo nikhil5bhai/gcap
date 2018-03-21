@@ -38,7 +38,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMoc
 import static com.google.common.base.Preconditions.checkState;
 
 
-/** @author Richard Wilson */
+
 public class TLSWireMockServer extends WireMockServer
 {
 

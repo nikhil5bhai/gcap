@@ -34,7 +34,7 @@ import static javax.ws.rs.core.UriBuilder.fromUri;
 import static org.apache.commons.collections4.MapUtils.emptyIfNull;
 
 
-/** @author Richard Wilson */
+
 public class MongoResponseUploader extends AbstractMongoResponseTransformer
 {
 

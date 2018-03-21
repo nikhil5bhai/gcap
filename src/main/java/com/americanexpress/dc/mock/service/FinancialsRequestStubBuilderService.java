@@ -17,7 +17,7 @@ import static java.util.Collections.singletonMap;
 import static java.util.Collections.unmodifiableMap;
 
 
-/** @author Richard Wilson */
+
 public class FinancialsRequestStubBuilderService extends RequestStubBuilderService
 {
 

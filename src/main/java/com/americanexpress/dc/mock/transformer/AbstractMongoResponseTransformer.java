@@ -15,7 +15,7 @@ import static javax.ws.rs.core.MediaType.WILDCARD;
 import static javax.ws.rs.core.UriBuilder.fromUri;
 
 
-/** @author Richard Wilson */
+
 public abstract class AbstractMongoResponseTransformer extends ResponseDefinitionTransformer
 {
 

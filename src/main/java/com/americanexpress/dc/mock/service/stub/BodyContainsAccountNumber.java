@@ -23,7 +23,7 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 
-/** @author Richard Wilson */
+
 public class BodyContainsAccountNumber implements RequestStubBuilder
 {
 

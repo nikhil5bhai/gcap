@@ -25,7 +25,7 @@ import static com.github.tomakehurst.wiremock.http.RequestMethod.*;
 import static com.github.tomakehurst.wiremock.http.Response.response;
 
 
-/** @author Richard Wilson */
+
 public class TLSProxyResponseRenderer extends ProxyResponseRenderer
 {
 

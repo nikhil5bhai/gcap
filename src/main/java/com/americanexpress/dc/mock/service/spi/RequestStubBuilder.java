@@ -6,7 +6,7 @@ import com.github.tomakehurst.wiremock.matching.RequestPatternBuilder;
 import java.util.Map;
 
 
-/** @author Richard Wilson */
+
 public interface RequestStubBuilder
 {
 

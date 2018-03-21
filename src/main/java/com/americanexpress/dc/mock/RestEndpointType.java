@@ -6,7 +6,7 @@ import static java.lang.String.format;
 import static org.apache.commons.lang3.EnumUtils.getEnum;
 
 
-/** @author Richard Wilson */
+
 public enum RestEndpointType
 {
   RESOURCE,

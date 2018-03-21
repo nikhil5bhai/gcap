@@ -26,7 +26,7 @@ import static java.util.stream.Collectors.*;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 
 
-/** @author Richard Wilson */
+
 public class ProxyInitializer
 {
 

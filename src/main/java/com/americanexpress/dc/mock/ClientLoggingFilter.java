@@ -11,7 +11,7 @@ import static com.axp.myca.common.util.Logger.logInfo;
 import static com.axp.myca.common.util.constants.Constants.SERVICE_NAME;
 
 
-/** @author Richard Wilson */
+
 @SuppressWarnings("unused")
 public class ClientLoggingFilter
     extends HttpExchangeLogging

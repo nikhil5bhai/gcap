@@ -42,12 +42,7 @@ import static javax.ws.rs.core.HttpHeaders.CONTENT_TYPE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 
-/**
- * {@link MockDataUploadUtility} class is used to load the mock data in central
- * mongo store.
- *
- * @author zselvad
- */
+
 public class MockDataUploadUtility
 {
 

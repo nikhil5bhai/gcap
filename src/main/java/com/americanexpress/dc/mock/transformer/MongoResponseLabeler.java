@@ -4,7 +4,7 @@ package com.americanexpress.dc.mock.transformer;
 import static com.americanexpress.dc.util.NamingUtil.kebabCase;
 
 
-/** @author Richard Wilson */
+
 public class MongoResponseLabeler extends AbstractMongoResponseTransformer
 {
 

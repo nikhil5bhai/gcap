@@ -31,7 +31,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.defaultString;
 
 
-/** @author Richard Wilson */
+
 @SuppressWarnings("all")
 public class HttpExchangeLogging
 {

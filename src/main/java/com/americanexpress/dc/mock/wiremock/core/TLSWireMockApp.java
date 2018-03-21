@@ -39,7 +39,7 @@ import static com.github.tomakehurst.wiremock.stubbing.ServeEvent.TO_LOGGED_REQU
 import static com.google.common.collect.FluentIterable.from;
 
 
-/** @author Richard Wilson */
+
 public class TLSWireMockApp implements StubServer, Admin
 {
 
