@@ -33,6 +33,51 @@ public class RestRequestStubBuilderService extends RequestStubBuilderService
 			  urlPathEqualTo( "/risk/credit/v1/institution/external_data//business_verification_results" )
 		  )
 	  );
+	  map.put
+	  (
+		  "axciom",
+		  new BodyContainsAccountNumber
+		  (
+			  POST,
+			  urlPathEqualTo( "/acquisition/digital/v1/credit_application/underwriting/inquiry_results" )
+		  )
+	  );
+	  map.put
+	  (
+		  "cbis",
+		  new BodyContainsAccountNumber
+		  (
+			  POST,
+			  urlPathEqualTo( "/security/v1/identity" )
+		  )
+	  );
+	  map.put
+	  (
+		  "lem",
+		  new BodyContainsAccountNumber
+		  (
+			  POST,
+			  urlPathEqualTo( "/loyalty/earn/event/v1/sources" )
+		  )
+	  );
+	  map.put
+	  (
+		  "bdpfulfillment",
+		  new BodyContainsAccountNumber
+		  (
+			  POST,
+			  urlPathEqualTo( "/risk/credit/v1/resources/accounts/income/update" )
+		  )
+	  );
+	  map.put
+	  (
+		  "aic",
+		  new BodyContainsAccountNumber
+		  (
+			  POST,
+			  urlPathEqualTo( "/risk/credit/v1/individual/credit_decisions/offer_controls/search" )
+		  )
+	  );
   }
 
   @Override
@@ -41,4 +86,3 @@ public class RestRequestStubBuilderService extends RequestStubBuilderService
     return map.get( key );
   }
 }
-

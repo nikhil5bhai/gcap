@@ -28,21 +28,21 @@ public class MongoConfiguration
       final List<ServerAddress> seeds
           = asList
           (
-              new ServerAddress( "lpdwd550.phx.aexp.com", 27017 ),
-              new ServerAddress( "lpdwd551.phx.aexp.com", 27017 ),
-              new ServerAddress( "lpdwd549.phx.aexp.com", 27017 )
+             new ServerAddress( "lpdospdb00126.phx.aexp.com", 27017 )
+             // new ServerAddress( "lpdwd551.phx.aexp.com", 27017 ),
+             // new ServerAddress( "lpdwd549.phx.aexp.com", 27017 )
           );
 
       System.setProperty( "spring.profiles.active", "E1_QA" );
       System.setProperty( "Config.market", "US" );
       cpsFileResolver = new CPSFileResolver();
-      String user = cpsFileResolver.getCps().getProperty( "MOCK_TRUSTED_ID" );
-      String password = cpsFileResolver.getCps().getProperty( "MOCK_TRUSTED_PSWD" );
+      String user = "gcapusr";//cpsFileResolver.getCps().getProperty( "MOCK_TRUSTED_ID" );
+      String password = "gcap_tst";//cpsFileResolver.getCps().getProperty( "MOCK_TRUSTED_PSWD" );
 
       final List<MongoCredential> mongoCredentials
           = singletonList
           (
-              createCredential( user, "APPX_API_MOCK_DB", password.toCharArray() )
+              createCredential( user, "gcap", password.toCharArray() )
           );
 
       CLIENT = new MongoClient( seeds, mongoCredentials );
@@ -66,6 +66,6 @@ public class MongoConfiguration
    */
   public static MongoDatabase getDatabase()
   {
-    return MongoClientHolder.CLIENT.getDatabase( "APPX_API_MOCK_DB" );
+    return MongoClientHolder.CLIENT.getDatabase( "gcap" );
   }
 }
